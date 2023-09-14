@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Designer';
+    src: url('../font/DesignerRegular.eot');
+    src: local('Designer'), local('DesignerRegular'),
+        url('../font/DesignerRegular.eot?#iefix') format('embedded-opentype'),
+        url('../font/DesignerRegular.woff2') format('woff2'),
+        url('../font/DesignerRegular.woff') format('woff'),
+        url('../font/DesignerRegular.ttf') format('truetype'),
+        url('../font/DesignerRegular.svg#DesignerRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

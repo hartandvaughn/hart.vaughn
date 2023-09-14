@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+:root {
+    font-size: 62.5%;
+    --height: calc( var( --vh, 1vh ) * 100 );
+    --width: calc( var( --vw, 1vw ) * 100 );
+}

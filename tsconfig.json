@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES2016",
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": false,
+        "noImplicitAny": false,
+        "skipLibCheck": true
+    },
+    "compileOnSave": false,
+    "include": [
+        "./src/",
+        "./src/typescript/"
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}

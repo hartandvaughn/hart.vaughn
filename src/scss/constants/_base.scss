@@ -1,0 +1,28 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #080808;
+    background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 8, 8, 8, 1 ) 0%, rgba( 26, 26, 26, 1 ) 50%, rgba( 8, 8, 8, 1 ) 100% );
+    background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 0% 3%) 0%, hsl(0deg 3% 6%) 22%, hsl(0deg 3% 8%) 33%, hsl(0deg 3% 9%) 42%, hsl(0deg 4% 11%) 50%, hsl(0deg 3% 9%) 58%, hsl(0deg 3% 8%) 67%, hsl(0deg 3% 6%) 78%, hsl(0deg 0% 3%) 100% )'};
+    color: rgba( 255, 255, 255, 0.9 );
+    font: normal normal 700 1.6rem/1.168em -apple-system, BlinkMacSystemFont, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, sans-serif;
+    font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-text-shadow: 1px 1px 1px rgba( 0, 0, 0, 0.0004 );
+    -ms-text-shadow: 1px 1px 1px rgba( 0, 0, 0, 0.0004 );
+    -o-text-shadow: 1px 1px 1px rgba( 0, 0, 0, 0.0004 );
+    -webkit-text-shadow: 1px 1px 1px rgba( 0, 0, 0, 0.0004 );
+    text-shadow: 1px 1px 1px rgba( 0, 0, 0, 0.0004 );
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
+    backface-visibility: hidden;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    height: var( --height );
+    width: var( --width );
+    -webkit-app-region: drag;
+}

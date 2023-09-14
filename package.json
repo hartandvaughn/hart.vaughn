@@ -1,0 +1,39 @@
+{
+  "name": "hart-vaugn",
+  "version": "1.0.0",
+  "author": "mcbeav",
+  "email": "422939+mcbeav@users.noreply.github.com",
+  "description": "Hart + Vaugn",
+  "homepage": "https://hartandvaugn.com",
+  "license": "MIT",
+  "keywords": [
+    "country",
+    "rock",
+    "music",
+    "alternative"
+  ],
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "build": "npm run sass:build && npm run webpack:build",
+    "deploy": "npm run sass:production && npm run webpack:production",
+    "sass:build": "node-sass ./src/scss/main.scss ./public/css/stylesheet.css --functions ./node_modules/chromatic-sass/dist/main.js --output-style expanded --indent-type tab --indent-width 1",
+    "sass:production": "node-sass ./src/scss/main.scss ./public/css/stylesheet.css --functions ./node_modules/chromatic-sass/dist/main.js --output-style compressed",
+    "webpack:build": "NODE_ENV=development webpack",
+    "webpack:production": "NODE_ENV=production webpack"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.9",
+    "@babel/preset-env": "^7.19.3",
+    "@babel/preset-typescript": "^7.18.6",
+    "babel-loader": "^8.2.5",
+    "chromatic-sass": "^0.1.8",
+    "copy-webpack-plugin": "^11.0.0",
+    "node-sass": "^7.0.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

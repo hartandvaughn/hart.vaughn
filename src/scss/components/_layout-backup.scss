@@ -1,0 +1,1137 @@
+body {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    height: var( --height );
+    width: var( --width );
+    grid-template-columns: 100%;
+    grid-template-rows: 85% 15%;
+
+    &> header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 1 / 1 / span 1 / span 1;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        user-select: none;
+
+        &> picture {
+            display: flex;
+            margin-top: -20vh;
+            margin-top: calc( -20 * var( --vh ) );
+            height: auto;
+            width: 80vw;
+            width: calc( 80 * var( --vw ) );
+            justify-content: center;
+            align-items: center;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+
+            &> img {
+                height: auto;
+                width: 100%;
+                opacity: 0;
+                pointer-events: none;
+                user-select: none;
+                animation: fade-logo 300ms ease-out 800ms forwards;
+            }
+        }
+
+        &> h1 {
+            display: none;
+            font-family: "Designer", sans-serif;
+            color: rgba( 181, 182, 170, 0.4 );
+            text-align: center;
+            font-size: clamp( 2em, 10vw, 12vh );
+            font-size: clamp( 2em, calc( 10 * var( --vw ) ), calc( 12 * var( --vh ) ) );
+            white-space: nowrap;
+            margin-top: 10vh;
+            margin-top: calc( 10 * var( --vh ) );
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+    }
+
+    &> main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        place-content: center;
+        height: 100vh;
+        width: 100vw;
+        height: var( --height );
+        width: var( --width );
+        grid-area: 1 / 1 / span 1 / span 1;
+
+        &> iframe {
+            height: clamp( 30vh, calc( 0.8 * 80vw ), 50vh );
+            width: 80vw;
+            height: clamp( calc( 30 * var( --vh ) ), calc( ( calc( 80 * var( --vw ) ) ) * 0.8 ), calc( 50 * var( --vh ) ) );
+            width: calc( 80 * var( --vw ) );
+            align-self: center;
+            justify-self: center;
+            opacity: 0;
+            animation: fade-widget 300ms ease-out 1000ms forwards;
+            z-index: 1;
+        }
+
+        &> picture {
+            position: fixed;
+            top: 0;
+            margin-top: 50vh;
+            margin-top: calc( 50 * var( --vh ) );
+            height: auto;
+            width: 100vw;
+            width: var( --width );
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+            z-index: 2;
+
+            &> img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                opacity: 0;
+                pointer-events: none;
+                user-select: none;
+                animation: fade-group 400ms ease-out 300ms forwards;
+            }
+
+            &:nth-of-type( 2 ) {
+                left: 0;
+                margin-left: -40%;
+            }
+
+            &:nth-of-type( 1 ) {
+                right: 0;
+                margin-right: -40%;
+            }
+        }
+    }
+
+    &> nav {
+        display: flex;
+        width: 100vw;
+        width: var( --width );
+        justify-content: center;
+        align-items: center;
+        grid-area: 2 / 1 / span 1 / span 1;
+        background: linear-gradient(0deg, rgba(8,8,8,1) 50%, rgba(8,8,8,0) 100%);
+        opacity: 0;
+        animation: fade-icons 300ms ease-out 500ms forwards;
+
+        &> ul {
+            display: flex;
+            width: 100vw;
+            width: var( --width );
+            padding: 0 10vw;
+            padding: 0 calc( 10 * var( --vw ) );
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+
+            &> li {
+
+                &> a,
+                a:link,
+                a:visited,
+                a:hover,
+                a:active {
+                    color: rgba( 202, 202, 203, 0.9 );
+                    font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    font-weight: 700;
+                    text-align: center;
+
+                    &> figure {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        &> picture {
+                            display: flex;
+                            height: auto;
+                            width: clamp( 6vh, 12vw, 46px );
+                            width: clamp( 6vh, calc( 12 * var( --vw ) ), 46px );
+
+                            &> img {
+                                height: auto;
+                                width: 100%;
+                                border: none;
+                                outline: none;
+                                opacity: 0.9;
+                            }
+                        }
+
+                        &> figcaption {
+                            display: none;
+                            margin-top: 1rem;
+                            font-size: 1.6em;
+                            font-weight: 900;
+                            text-transform: uppercase;
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            color: rgba( 202, 202, 203, 0.4 );
+                        }
+                    }
+                }
+
+                &[data-view=full] {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &> footer {
+        position: fixed;
+        display: none;
+        bottom: 2vh;
+        bottom: calc( 2 * var( --vh ) );
+        left: 0;
+        width: 100vw;
+        width: var( --width );
+        padding-bottom: env(safe-area-inset-bottom);
+
+        &> ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+
+            &> li {
+                color: rgba( 202, 202, 203, 0.6 );
+                font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
+                font-size: 0.8em;
+                font-weight: 300;
+
+                &:first-of-type {
+                    margin-right: 5vw;
+                    margin-right: calc( 5 * var( --vw ) );
+                }
+
+                &:last-of-type {
+                    margin-left: 5vw;
+                    margin-left: calc( 5 * var( --vw ) );
+                }
+
+                &> a,
+                a:link,
+                a:visited,
+                a:hover,
+                a:active {
+                    color: rgba( 202, 202, 203, 0.6 );
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+// // @media screen {
+
+    // @media ( orientation: landscape ) {
+
+    //     body {
+    //         grid-template-rows: 70% 30%;
+
+    //         &> header {
+    //             align-items: unset;
+
+    //             &> picture {
+    //                 display: none;
+    //             }
+
+    //             &> h1 {
+    //                 display: unset;
+    //                 animation: fade-logo 300ms ease-out 800ms forwards;
+    //             }
+    //         }
+
+    //         &> main {
+
+    //             &> iframe {
+    //                 height: 40vh;
+    //                 width: 60vw;
+    //                 height: calc( 40 * var( --vh ) );
+    //                 width: calc( 60 * var( --vw ) );
+    //             }
+
+    //             &> picture {
+    //                 top: 0;
+    //                 bottom: unset;
+    //                 height: auto;
+    //                 width: 100vw;
+    //                 width: var( --width );
+    //                 margin-top: unset;
+    //                 z-index: 1;
+
+    //                 &:nth-of-type( 2 ) {
+    //                     margin-left: -45%;
+    //                 }
+        
+    //                 &:nth-of-type( 1 ) {
+    //                     margin-right: -45%;
+    //                 }
+    //             }
+    //         }
+
+    //         &> nav {
+    //             align-items: start;
+
+    //             &> ul {
+    //                 margin-top: 2vh;
+    //                 margin-top: calc( 2 * var( --vh ) );
+        
+    //                 &> li {
+        
+    //                     &> a,
+    //                     a:link,
+    //                     a:visited,
+    //                     a:hover,
+    //                     a:active {
+        
+    //                         &> figure {
+        
+    //                             &> picture {
+    //                                 width: clamp( 2vh, 10vh, 64px );
+    //                                 width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+    //                             }
+    //                         }
+    //                     }
+        
+    //                     &[data-view=full] {
+    //                         display: unset;
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         &> footer {
+    //             display: block;
+    //         }
+    //     }
+    // }
+
+    // /** iPad Mini & Larger */
+    // @media ( min-width: 768px ) and ( min-height: 1024px ) {
+
+    //     body {
+    //         grid-template-rows: 30% 70%;
+
+    //         &> header {
+
+    //             &> picture {
+    //                 position: absolute;
+    //                 height: 50vh;
+    //                 height: calc( 50 * var( --vh ) );
+    //                 width: auto;
+    //                 margin-top: 50vh;
+
+    //                 &> img {
+    //                     height: 100%;
+    //                     width: auto;
+    //                 }
+    //             }
+
+    //             &> h1 {
+    //                 display: unset;
+    //                 animation: fade-title 300ms ease-out 800ms forwards;
+    //             }
+    //         }
+
+    //         &> main {
+    //             grid-area: 2 / 1 / span 1 / span 1;
+
+    //             &> iframe {
+    //                 width: 60vw;
+    //                 height: 40vh;
+    //                 width: calc( 60 * var( --vw ) );
+    //                 height: calc( 40 * var( --vh ) );
+    //                 max-width: 600px;
+    //                 max-height: 400px;
+    //                 align-self: start;
+    //                 margin-top: 10vh;
+    //                 margin-top: calc( 10 * var( --vh ) );
+    //             }
+
+    //             &> picture {
+    //                 height: 100vh;
+    //                 width: auto;
+    //                 margin-top: unset;
+    //                 transform: scaleX( -1 );
+    //                 z-index: 1;
+
+    //                 &> img {
+    //                     height: 100%;
+    //                     width: auto;
+    //                 }
+
+    //                 &:nth-of-type( 2 ) {
+    //                     left: unset;
+    //                     margin-left: -50vh;
+    //                 }
+        
+    //                 &:nth-of-type( 1 ) {
+    //                     right: unset;
+    //                     margin-right: -50vh;
+    //                 }
+    //             }
+    //         }
+
+    //         &> nav {
+    //             grid-area: 1 / 1 / span 1 / span 1;
+    //             background: none;
+    //             align-self: end;
+
+        
+    //             &> ul {
+    //                 width: clamp( 320px, 100vw, 1000px );
+    //                 width: clamp( 320px, var( --width ), 1000px );
+        
+    //                 &> li {
+        
+    //                     &> a,
+    //                     a:link,
+    //                     a:visited,
+    //                     a:hover,
+    //                     a:active {
+        
+    //                         &> figure {
+        
+    //                             &> picture {
+    //                                 width: clamp( 2vh, 10vh, 64px );
+    //                                 width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+    //                             }
+    //                         }
+    //                     }
+        
+    //                     &[data-view=full] {
+    //                         display: unset;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    // }
+
+//     // @media ( min-width: 1025px ) {
+
+//         // @media ( pointer: fine ) and ( hover: hover ) {
+
+//             body {
+//                 grid-template-rows: 30% 70%;
+//                 background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 26, 26, 26, 1 ) 0%, rgba( 8, 8, 8, 1 ) 50%, rgba( 26, 26, 26, 1 ) 100% );
+//                 background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% )'};
+    
+//                 &> header {
+
+//                     &> picture {
+//                         position: absolute;
+//                         height: 50vh;
+//                         height: calc( 50 * var( --vh ) );
+//                         width: auto;
+//                         margin-top: 50vh;
+    
+//                         &> img {
+//                             height: 100%;
+//                             width: auto;
+//                         }
+//                     }
+    
+//                     &> h1 {
+//                         display: unset;
+//                         animation: fade-title 300ms ease-out 800ms forwards;
+//                     }
+//                 }
+    
+//                 &> main {
+//                     grid-area: 2 / 1 / span 1 / span 1;
+    
+//                     &> iframe {
+//                         width: 60vw;
+//                         height: 40vh;
+//                         width: calc( 60 * var( --vw ) );
+//                         height: calc( 30 * var( --vh ) );
+//                         max-width: 600px;
+//                         max-height: 500px;
+//                         align-self: start;
+//                         margin-top: 10vh;
+//                         margin-top: calc( 10 * var( --vh ) );
+//                     }
+    
+//                     &> picture {
+//                         width: auto;
+//                         transform: scaleX( -1 );
+//                         z-index: 1;
+    
+//                         &> img {
+//                             width: auto;
+//                         }
+
+//                         &:nth-of-type( 2 ) {
+//                             margin-left: -60vh;
+//                         }
+            
+//                         &:nth-of-type( 1 ) {
+//                             margin-right: -60vh;
+//                         }
+//                     }
+//                 }
+    
+//                 &> nav {
+//                     grid-area: 1 / 1 / span 1 / span 1;
+//                     background: none;
+//                     align-self: end;
+
+            
+//                     &> ul {
+//                         justify-content: center;
+//                         // width: clamp( 320px, 80vw, 1000px );
+//                         // width: clamp( 320px, var( --width ), 1000px );
+            
+//                         &> li {
+//                             width: clamp( calc( 2vh * 2 ), calc( 10vh * 2 ), calc( 64px * 2 ) );
+//                             width: clamp( calc( calc( 2 * var( --vh ) ) * 2 ), calc( calc( 10 * var( --vh ) ) * 2 ), calc( 64px * 2 ) );
+            
+//                             &> a,
+//                             a:link,
+//                             a:visited,
+//                             a:hover,
+//                             a:active {
+            
+//                                 &> figure {
+            
+//                                     &> picture {
+//                                         width: clamp( 2vh, 10vh, 64px );
+//                                         width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+//                                     }
+    
+//                                     &> figcaption {
+//                                         display: unset;
+//                                     }
+//                                 }
+//                             }
+            
+//                             &[data-view=full] {
+//                                 display: unset;
+//                             }
+//                         }
+//                     }
+//                 }
+
+//                 &> footer {
+//                     display: block;
+            
+//                     &> ul {
+            
+//                         &> li {
+//                             color: rgba( 202, 202, 203, 0.8 );
+//                             font-size: 1em;
+//                             font-weight: 600;
+            
+//                             &> a,
+//                             a:link,
+//                             a:visited,
+//                             a:hover,
+//                             a:active {
+//                                 color: rgba( 202, 202, 203, 0.8 );
+//                                 text-decoration: none;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+        // }
+    // }
+// }
+
+
+
+
+
+// body {
+//     display: grid;
+//     height: 100vh;
+//     width: 100vw;
+//     height: var( --height );
+//     width: var( --width );
+//     grid-template-columns: 100%;
+//     grid-template-rows: 30% 70%;
+//     background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 26, 26, 26, 1 ) 0%, rgba( 8, 8, 8, 1 ) 50%, rgba( 26, 26, 26, 1 ) 100% );
+//     background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% )'};
+
+//     &> header {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         grid-area: 1 / 1 / span 1 / span 1;
+//         height: 100%;
+//         width: 100%;
+//         pointer-events: none;
+//         user-select: none;
+
+//         &> picture {
+//             position: absolute;
+//             display: flex;
+//             height: 50vh;
+//             width: auto;
+//             height: calc( 50 * var( --vh ) );
+//             margin-top: 50vh;
+//             margin-top: calc( 50 * var( --vh ) );
+//             justify-content: center;
+//             align-items: center;
+//             object-fit: contain;
+//             pointer-events: none;
+//             user-select: none;
+
+//             &> img {
+//                 height: 100%;
+//                 width: auto;
+//                 opacity: 0;
+//                 pointer-events: none;
+//                 user-select: none;
+//                 animation: fade-logo 300ms ease-out 800ms forwards;
+//             }
+//         }
+
+//         &> h1 {
+//             font-family: "Designer", sans-serif;
+//             color: rgba( 181, 182, 170, 0.4 );
+//             text-align: center;
+//             font-size: clamp( 2em, 40vw, 25vh );
+//             font-size: clamp( 2em, calc( 20 * var( --vh ) ), calc( 10 * var( --vw ) ) );
+//             white-space: nowrap;
+//             margin-top: 10vh;
+//             margin-top: calc( 10 * var( --vh ) );
+//             opacity: 0;
+//             pointer-events: none;
+//             user-select: none;
+//             animation: fade-title 300ms ease-out 800ms forwards;
+//         }
+//     }
+
+//     &> main {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         display: flex;
+//         place-content: center;
+//         height: 100vh;
+//         width: 100vw;
+//         height: var( --height );
+//         width: var( --width );
+//         grid-area: 2 / 1 / span 1 / span 1;
+
+//         &> iframe {
+//             width: 60vw;
+//             height: 40vh;
+//             width: calc( 60 * var( --vw ) );
+//             height: calc( 30 * var( --vh ) );
+//             max-width: 600px;
+//             max-height: 500px;
+//             margin-top: 10vh;
+//             margin-top: calc( 10 * var( --vh ) );
+//             align-self: start;
+//             justify-self: center;
+//             opacity: 0;
+//             animation: fade-widget 300ms ease-out 1000ms forwards;
+//             z-index: 1;
+//         }
+
+//         &> picture {
+//             position: fixed;
+//             top: 0;
+//             height: 100vh;
+//             height: var( --height );
+//             width: auto;
+//             object-fit: contain;
+//             pointer-events: none;
+//             user-select: none;
+//             transform: scaleX( -1 );
+//             z-index: 1;
+
+//             &> img {
+//                 height: 100%;
+//                 width: auto;
+//                 object-fit: contain;
+//                 opacity: 0;
+//                 pointer-events: none;
+//                 user-select: none;
+//                 animation: fade-group 400ms ease-out 300ms forwards;
+//             }
+
+//             &:nth-of-type( 2 ) {
+//                 margin-left: -60vh;
+//             }
+
+//             &:nth-of-type( 1 ) {
+//                 margin-right: -60vh;
+//             }
+//         }
+//     }
+
+//     &> nav {
+//         display: flex;
+//         width: 100vw;
+//         width: var( --width );
+//         align-self: end;
+//         justify-content: center;
+//         align-items: center;
+//         grid-area: 1 / 1 / span 1 / span 1;
+//         opacity: 0;
+//         animation: fade-icons 300ms ease-out 500ms forwards;
+
+//         &> ul {
+//             display: flex;
+//             width: 100vw;
+//             width: var( --width );
+//             padding: 0 10vw;
+//             padding: 0 calc( 10 * var( --vw ) );
+//             flex-direction: row;
+//             flex-wrap: nowrap;
+//             justify-content: center;
+
+//             &> li {
+//                 width: clamp( calc( 2vh * 2 ), calc( 10vh * 2 ), calc( 64px * 2 ) );
+//                 width: clamp( calc( calc( 2 * var( --vh ) ) * 2 ), calc( calc( 10 * var( --vh ) ) * 2 ), calc( 64px * 2 ) );
+
+//                 &> a,
+//                 a:link,
+//                 a:visited,
+//                 a:hover,
+//                 a:active {
+//                     color: rgba( 202, 202, 203, 0.9 );
+//                     font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
+//                     font-size: 1rem;
+//                     text-decoration: none;
+//                     font-weight: 700;
+//                     text-align: center;
+
+//                     &> figure {
+//                         display: flex;
+//                         flex-direction: column;
+//                         justify-content: center;
+//                         align-items: center;
+
+//                         &> picture {
+//                             display: flex;
+//                             height: auto;
+//                             width: clamp( 2vh, 10vh, 64px );
+//                             width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+
+//                             &> img {
+//                                 height: auto;
+//                                 width: 100%;
+//                                 border: none;
+//                                 outline: none;
+//                                 opacity: 0.9;
+//                             }
+//                         }
+
+//                         &> figcaption {
+//                             margin-top: 1rem;
+//                             font-size: 1.6em;
+//                             font-weight: 900;
+//                             text-transform: uppercase;
+//                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//                             color: rgba( 202, 202, 203, 0.4 );
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     &> footer {
+//         position: fixed;
+//         bottom: 2vh;
+//         bottom: calc( 2 * var( --vh ) );
+//         left: 0;
+//         width: 100vw;
+//         width: var( --width );
+//         padding-bottom: env(safe-area-inset-bottom);
+
+//         &> ul {
+//             display: flex;
+//             flex-direction: row;
+//             flex-wrap: nowrap;
+//             align-items: center;
+//             justify-content: center;
+
+//             &> li {
+//                 color: rgba( 202, 202, 203, 0.8 );
+//                 font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
+//                 font-size: 1em;
+//                 font-weight: 600;
+
+//                 &:first-of-type {
+//                     margin-right: 5vw;
+//                     margin-right: calc( 5 * var( --vw ) );
+//                 }
+
+//                 &:last-of-type {
+//                     margin-left: 5vw;
+//                     margin-left: calc( 5 * var( --vw ) );
+//                 }
+
+//                 &> a,
+//                 a:link,
+//                 a:visited,
+//                 a:hover,
+//                 a:active {
+//                     color: rgba( 202, 202, 203, 0.8 );
+//                     text-decoration: none;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+@media only screen {
+
+    @media ( orientation: landscape ) {
+
+        body {
+            grid-template-rows: 70% 30%;
+
+            &> header {
+                align-items: unset;
+
+                &> picture {
+                    display: none;
+                }
+
+                &> h1 {
+                    display: unset;
+                    animation: fade-logo 300ms ease-out 800ms forwards;
+                }
+            }
+
+            &> main {
+
+                &> iframe {
+                    height: 40vh;
+                    width: 60vw;
+                    height: calc( 40 * var( --vh ) );
+                    width: calc( 60 * var( --vw ) );
+                }
+
+                &> picture {
+                    top: 0;
+                    bottom: unset;
+                    height: auto;
+                    width: 100vw;
+                    width: var( --width );
+                    margin-top: unset;
+                    z-index: 1;
+
+                    &:nth-of-type( 2 ) {
+                        margin-left: -45%;
+                    }
+        
+                    &:nth-of-type( 1 ) {
+                        margin-right: -45%;
+                    }
+                }
+            }
+
+            &> nav {
+                align-items: start;
+
+                &> ul {
+                    margin-top: 2vh;
+                    margin-top: calc( 2 * var( --vh ) );
+        
+                    &> li {
+        
+                        &> a,
+                        a:link,
+                        a:visited,
+                        a:hover,
+                        a:active {
+        
+                            &> figure {
+        
+                                &> picture {
+                                    width: clamp( 2vh, 10vh, 64px );
+                                    width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+                                }
+                            }
+                        }
+        
+                        &[data-view=full] {
+                            display: unset;
+                        }
+                    }
+                }
+            }
+
+            &> footer {
+                display: block;
+            }
+        }
+    }
+
+    /** iPad Mini & Larger */
+    @media ( min-width: 768px ) and ( min-height: 1024px ) {
+
+        body {
+            grid-template-rows: 30% 70%;
+
+            &> header {
+
+                &> picture {
+                    position: absolute;
+                    height: 50vh;
+                    height: calc( 50 * var( --vh ) );
+                    width: auto;
+                    margin-top: 50vh;
+
+                    &> img {
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+
+                &> h1 {
+                    display: unset;
+                    animation: fade-title 300ms ease-out 800ms forwards;
+                }
+            }
+
+            &> main {
+                grid-area: 2 / 1 / span 1 / span 1;
+
+                &> iframe {
+                    width: 60vw;
+                    height: 40vh;
+                    width: calc( 60 * var( --vw ) );
+                    height: calc( 40 * var( --vh ) );
+                    max-width: 600px;
+                    max-height: 400px;
+                    align-self: start;
+                    margin-top: 10vh;
+                    margin-top: calc( 10 * var( --vh ) );
+                }
+
+                &> picture {
+                    height: 100vh;
+                    width: auto;
+                    margin-top: unset;
+                    transform: scaleX( -1 );
+                    z-index: 1;
+
+                    &> img {
+                        height: 100%;
+                        width: auto;
+                    }
+
+                    &:nth-of-type( 2 ) {
+                        left: unset;
+                        margin-left: -50vh;
+                    }
+        
+                    &:nth-of-type( 1 ) {
+                        right: unset;
+                        margin-right: -50vh;
+                    }
+                }
+            }
+
+            &> nav {
+                grid-area: 1 / 1 / span 1 / span 1;
+                background: none;
+                align-self: end;
+
+        
+                &> ul {
+                    width: clamp( 320px, 100vw, 1000px );
+                    width: clamp( 320px, var( --width ), 1000px );
+        
+                    &> li {
+        
+                        &> a,
+                        a:link,
+                        a:visited,
+                        a:hover,
+                        a:active {
+        
+                            &> figure {
+        
+                                &> picture {
+                                    width: clamp( 2vh, 10vh, 64px );
+                                    width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+                                }
+                            }
+                        }
+        
+                        &[data-view=full] {
+                            display: unset;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+ 
+    @media ( pointer: fine ) {
+
+        body {
+            grid-template-rows: 30% 70%;
+            background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 26, 26, 26, 1 ) 0%, rgba( 8, 8, 8, 1 ) 50%, rgba( 26, 26, 26, 1 ) 100% );
+            background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% )'};
+        
+            &> header {
+        
+                &> picture {
+                    position: absolute;
+                    height: 50vh;
+                    height: calc( 50 * var( --vh ) );
+                    width: auto;
+                    margin-top: 50vh;
+                    margin-top: calc( 50 * var( --vh ) );
+        
+                    &> img {
+                        height: 100%;
+                        width: auto;
+                        animation: fade-logo 300ms ease-out 800ms forwards;
+                    }
+                }
+        
+                &> h1 {
+                    display: unset;
+                    animation: fade-title 300ms ease-out 800ms forwards;
+                }
+            }
+        
+            &> main {
+                grid-area: 2 / 1 / span 1 / span 1;
+        
+                &> iframe {
+                    height: clamp( 140px, calc( 30 * var( --vh ) ), 400px );
+                    width: clamp( 280px, calc( 60 * var( --vw ) ), 800px );
+                    margin-top: 10vh;
+                    margin-top: calc( 10 * var( --vh ) );
+                    align-self: start;
+                }
+        
+                &> picture {
+                    top: unset;
+                    margin-top: unset;
+                    height: 100vh;
+                    height: var( --height );
+                    width: auto;
+                    transform: scaleX( -1 );
+                    z-index: 1;
+        
+                    &> img {
+                        height: 100%;
+                        width: auto;
+                    }
+        
+                    &:nth-of-type( 2 ) {
+                        left: unset;
+                        margin-left: -60vh;
+                    }
+        
+                    &:nth-of-type( 1 ) {
+                        right: unset;
+                        margin-right: -60vh;
+                    }
+                }
+            }
+        
+            &> nav {
+                grid-area: 1 / 1 / span 1 / span 1;
+                align-self: end;
+                background: none;
+        
+                &> ul {
+                    justify-content: center;
+        
+                    &> li {
+                        width: clamp( calc( 2vh * 2 ), calc( 10vh * 2 ), calc( 64px * 2 ) );
+                        width: clamp( calc( calc( 2 * var( --vh ) ) * 2 ), calc( calc( 10 * var( --vh ) ) * 2 ), calc( 64px * 2 ) );
+        
+                        &> a,
+                        a:link,
+                        a:visited,
+                        a:hover,
+                        a:active {
+        
+                            &> figure {
+        
+                                &> picture {
+                                    width: clamp( 2vh, 10vh, 64px );
+                                    width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
+                                }
+        
+                                &> figcaption {
+                                    display: unset;
+                                }
+                            }
+                        }
+
+                        &[data-view=full] {
+                            display: unset;
+                        }
+                    }
+                }
+            }
+        
+            &> footer {
+                display: unset;
+        
+                &> ul {
+        
+                    &> li {
+                        color: rgba( 202, 202, 203, 0.8 );
+                        font-size: 1em;
+                        font-weight: 600;
+        
+                        &> a,
+                        a:link,
+                        a:visited,
+                        a:hover,
+                        a:active {
+                            color: rgba( 202, 202, 203, 0.8 );
+                        }
+                    }
+                }
+            }
+        }
+
+        @media ( max-height: 1100px ) {
+
+            body {
+                grid-template-rows: 50% 50%;
+    
+                &> main {
+    
+                    &> picture {
+            
+                        &:nth-of-type( 2 ) {
+                            margin-left: clamp(-900px, -75vh, -50%);
+                        }
+            
+                        &:nth-of-type( 1 ) {
+                            margin-right: clamp(-900px, -75vh, -50%);
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+}
