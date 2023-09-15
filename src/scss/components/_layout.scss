@@ -183,7 +183,8 @@ body {
                     }
                 }
 
-                &[data-view=full] {
+                &[data-view=full],
+                &[data-show=false] {
                     display: none;
                 }
             }
@@ -314,10 +315,6 @@ body {
                     }
                 }
             }
-
-            &> footer {
-                display: block;
-            }
         }
     }
 
@@ -394,8 +391,6 @@ body {
 
         
                 &> ul {
-                    width: clamp( 320px, 100vw, 1000px );
-                    width: clamp( 320px, var( --width ), 1000px );
         
                     &> li {
         
