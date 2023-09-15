@@ -10,7 +10,6 @@ body {
     &> header {
         display: flex;
         justify-content: center;
-        align-items: center;
         grid-area: 1 / 1 / span 1 / span 1;
         height: 100%;
         width: 100%;
@@ -18,12 +17,12 @@ body {
         user-select: none;
 
         &> picture {
+            position: absolute;
             display: flex;
-            margin-top: -20vh;
-            margin-top: calc( -20 * var( --vh ) );
             height: auto;
             width: 80vw;
             width: calc( 80 * var( --vw ) );
+            align-self: start;
             justify-content: center;
             align-items: center;
             object-fit: contain;
@@ -41,18 +40,18 @@ body {
         }
 
         &> h1 {
-            display: none;
             font-family: "Designer", sans-serif;
             color: rgba( 181, 182, 170, 0.4 );
             text-align: center;
-            font-size: clamp( 2em, 10vw, 12vh );
-            font-size: clamp( 2em, calc( 10 * var( --vw ) ), calc( 12 * var( --vh ) ) );
+            font-size: clamp( 2em, 10vh, 12vw );
+            font-size: clamp( 2em, calc( 10 * var( --vh ) ), calc( 12 * var( --vw ) ) );
             white-space: nowrap;
             margin-top: 10vh;
             margin-top: calc( 10 * var( --vh ) );
             opacity: 0;
             pointer-events: none;
             user-select: none;
+            animation: fade-title 300ms ease-out 800ms forwards;
         }
     }
 
@@ -70,9 +69,9 @@ body {
 
         &> iframe {
             height: clamp( 30vh, calc( 0.8 * 80vw ), 50vh );
-            width: 80vw;
-            height: clamp( calc( 30 * var( --vh ) ), calc( ( calc( 80 * var( --vw ) ) ) * 0.8 ), calc( 50 * var( --vh ) ) );
-            width: calc( 80 * var( --vw ) );
+            width: 70vw;
+            height: clamp( 300px, calc( ( calc( 50 * var( --vh ) ) ) * 0.8 ), calc( 50 * var( --vh ) ) );
+            width: calc( 70 * var( --vw ) );
             align-self: center;
             justify-self: center;
             opacity: 0;
@@ -209,10 +208,10 @@ body {
             justify-content: center;
 
             &> li {
-                color: rgba( 202, 202, 203, 0.6 );
+                color: rgba( 202, 202, 203, 0.8 );
                 font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
-                font-size: 0.8em;
-                font-weight: 300;
+                font-size: 1em;
+                font-weight: 600;
 
                 &:first-of-type {
                     margin-right: 5vw;
@@ -229,7 +228,7 @@ body {
                 a:visited,
                 a:hover,
                 a:active {
-                    color: rgba( 202, 202, 203, 0.6 );
+                    color: rgba( 202, 202, 203, 0.8 );
                     text-decoration: none;
                 }
             }
@@ -242,28 +241,25 @@ body {
     @media ( orientation: landscape ) {
 
         body {
-            grid-template-rows: 70% 30%;
+            grid-template-rows: 80% 20%;
+            background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 8, 8, 8, 1 ) 0%, rgba( 26, 26, 26, 1 ) 50%, rgba( 8, 8, 8, 1 ) 100% );
+            background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 0% 3%) 0%, hsl(0deg 3% 6%) 22%, hsl(0deg 3% 8%) 33%, hsl(0deg 3% 9%) 42%, hsl(0deg 4% 11%) 50%, hsl(0deg 3% 9%) 58%, hsl(0deg 3% 8%) 67%, hsl(0deg 3% 6%) 78%, hsl(0deg 0% 3%) 100% )'};
 
             &> header {
-                align-items: unset;
-
-                &> picture {
-                    display: none;
-                }
 
                 &> h1 {
-                    display: unset;
-                    animation: fade-logo 300ms ease-out 800ms forwards;
+                    font-size: clamp( 2em, 20vh, 12vw );
+                    font-size: clamp( 2em, calc( 20 * var( --vh ) ), calc( 12 * var( --vw ) ) );
                 }
             }
 
             &> main {
 
                 &> iframe {
-                    height: 40vh;
-                    width: 60vw;
-                    height: calc( 40 * var( --vh ) );
-                    width: calc( 60 * var( --vw ) );
+                    height: 30vh;
+                    width: 40vw;
+                    height: calc( 30 * var( --vh ) );
+                    width: calc( 40 * var( --vw ) );
                 }
 
                 &> picture {
@@ -286,11 +282,8 @@ body {
             }
 
             &> nav {
-                align-items: start;
 
                 &> ul {
-                    margin-top: 2vh;
-                    margin-top: calc( 2 * var( --vh ) );
         
                     &> li {
         
@@ -316,6 +309,29 @@ body {
                 }
             }
         }
+
+        @media ( pointer: coarse ) {
+
+            body {
+
+                &> header {
+
+                    &> picture {
+                        display: none;
+                    }
+                }
+
+                &> main {
+
+                    &> iframe {
+                        height: 40vh;
+                        width: 60vw;
+                        height: calc( 40 * var( --vh ) );
+                        width: calc( 60 * var( --vw ) );
+                    }
+                }
+            }
+        }
     }
 
     /** iPad Mini & Larger */
@@ -323,6 +339,8 @@ body {
 
         body {
             grid-template-rows: 30% 70%;
+            background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 26, 26, 26, 1 ) 0%, rgba( 8, 8, 8, 1 ) 50%, rgba( 26, 26, 26, 1 ) 100% );
+            background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% )'};
 
             &> header {
 
@@ -331,7 +349,6 @@ body {
                     height: 50vh;
                     height: calc( 50 * var( --vh ) );
                     width: auto;
-                    margin-top: 50vh;
 
                     &> img {
                         height: 100%;
@@ -391,8 +408,11 @@ body {
 
         
                 &> ul {
-        
+                    justify-content: center;
+
                     &> li {
+                        width: clamp( calc( 2vh * 2 ), calc( 10vh * 2 ), calc( 64px * 2 ) );
+                        width: clamp( calc( calc( 2 * var( --vh ) ) * 2 ), calc( calc( 10 * var( --vh ) ) * 2 ), calc( 64px * 2 ) );
         
                         &> a,
                         a:link,
@@ -415,6 +435,10 @@ body {
                     }
                 }
             }
+
+            &> footer {
+                display: unset;
+            }
         }
 
     }
@@ -433,8 +457,6 @@ body {
                     height: 50vh;
                     height: calc( 50 * var( --vh ) );
                     width: auto;
-                    margin-top: 50vh;
-                    margin-top: calc( 50 * var( --vh ) );
         
                     &> img {
                         height: 100%;
@@ -453,8 +475,8 @@ body {
                 grid-area: 2 / 1 / span 1 / span 1;
         
                 &> iframe {
-                    height: clamp( 140px, calc( 30 * var( --vh ) ), 400px );
-                    width: clamp( 280px, calc( 60 * var( --vw ) ), 800px );
+                    // height: clamp( 140px, calc( 30 * var( --vh ) ), 400px );
+                    // width: clamp( 280px, calc( 60 * var( --vw ) ), 800px );
                     margin-top: 10vh;
                     margin-top: calc( 10 * var( --vh ) );
                     align-self: start;
@@ -526,46 +548,7 @@ body {
         
             &> footer {
                 display: unset;
-        
-                &> ul {
-        
-                    &> li {
-                        color: rgba( 202, 202, 203, 0.8 );
-                        font-size: 1em;
-                        font-weight: 600;
-        
-                        &> a,
-                        a:link,
-                        a:visited,
-                        a:hover,
-                        a:active {
-                            color: rgba( 202, 202, 203, 0.8 );
-                        }
-                    }
-                }
             }
-        }
-
-        @media ( max-height: 1100px ) {
-
-            body {
-                grid-template-rows: 50% 50%;
-    
-                &> main {
-    
-                    &> picture {
-            
-                        &:nth-of-type( 2 ) {
-                            margin-left: clamp(-900px, -75vh, -50%);
-                        }
-            
-                        &:nth-of-type( 1 ) {
-                            margin-right: clamp(-900px, -75vh, -50%);
-                        }
-                    }
-                }
-            }
-    
         }
     }
 }

@@ -130,7 +130,6 @@ body {
 body > header {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	grid-area: 1 / 1 / span 1 / span 1;
 	height: 100%;
 	width: 100%;
@@ -139,12 +138,12 @@ body > header {
 }
 
 body > header > picture {
+	position: absolute;
 	display: flex;
-	margin-top: -20vh;
-	margin-top: calc( -20 * var( --vh ));
 	height: auto;
 	width: 80vw;
 	width: calc( 80 * var( --vw ));
+	align-self: start;
 	justify-content: center;
 	align-items: center;
 	object-fit: contain;
@@ -162,18 +161,18 @@ body > header > picture > img {
 }
 
 body > header > h1 {
-	display: none;
 	font-family: "Designer", sans-serif;
 	color: rgba(181, 182, 170, 0.4);
 	text-align: center;
-	font-size: clamp(2em, 10vw, 12vh);
-	font-size: clamp(2em, calc( 10 * var( --vw )), calc( 12 * var( --vh )));
+	font-size: clamp(2em, 10vh, 12vw);
+	font-size: clamp(2em, calc( 10 * var( --vh )), calc( 12 * var( --vw )));
 	white-space: nowrap;
 	margin-top: 10vh;
 	margin-top: calc( 10 * var( --vh ));
 	opacity: 0;
 	pointer-events: none;
 	user-select: none;
+	animation: fade-title 300ms ease-out 800ms forwards;
 }
 
 body > main {
@@ -191,9 +190,9 @@ body > main {
 
 body > main > iframe {
 	height: clamp(30vh, calc( 0.8 * 80vw), 50vh);
-	width: 80vw;
-	height: clamp(calc( 30 * var( --vh )), calc( ( calc( 80 * var( --vw ) ) ) * 0.8), calc( 50 * var( --vh )));
-	width: calc( 80 * var( --vw ));
+	width: 70vw;
+	height: clamp(300px, calc( ( calc( 50 * var( --vh ) ) ) * 0.8), calc( 50 * var( --vh )));
+	width: calc( 70 * var( --vw ));
 	align-self: center;
 	justify-self: center;
 	opacity: 0;
@@ -319,7 +318,7 @@ body > nav > ul > li a:active > figure > figcaption {
 	color: rgba(202, 202, 203, 0.4);
 }
 
-body > nav > ul > li[data-view=full] {
+body > nav > ul > li[data-view=full], body > nav > ul > li[data-show=false] {
 	display: none;
 }
 
@@ -343,10 +342,10 @@ body > footer > ul {
 }
 
 body > footer > ul > li {
-	color: rgba(202, 202, 203, 0.6);
+	color: rgba(202, 202, 203, 0.8);
 	font-family: -apple-system, BlinkMacSystemFont, segoe ui, "Segoe UI", helvetica neue, helvetica, Tahoma, Geneva, Verdana, Ubuntu, roboto, sans-serif;
-	font-size: 0.8em;
-	font-weight: 300;
+	font-size: 1em;
+	font-weight: 600;
 }
 
 body > footer > ul > li:first-of-type {
@@ -364,29 +363,25 @@ body > footer > ul > li a:link,
 body > footer > ul > li a:visited,
 body > footer > ul > li a:hover,
 body > footer > ul > li a:active {
-	color: rgba(202, 202, 203, 0.6);
+	color: rgba(202, 202, 203, 0.8);
 	text-decoration: none;
 }
 
 @media only screen and (orientation: landscape) {
 	body {
-		grid-template-rows: 70% 30%;
-	}
-	body > header {
-		align-items: unset;
-	}
-	body > header > picture {
-		display: none;
+		grid-template-rows: 80% 20%;
+		background: url("../image/pattern.png") repeat, linear-gradient(90deg, #080808 0%, #1a1a1a 50%, #080808 100%);
+		background: url("../image/pattern.png") repeat, linear-gradient( 90deg, hsl(0deg 0% 3%) 0%, hsl(0deg 3% 6%) 22%, hsl(0deg 3% 8%) 33%, hsl(0deg 3% 9%) 42%, hsl(0deg 4% 11%) 50%, hsl(0deg 3% 9%) 58%, hsl(0deg 3% 8%) 67%, hsl(0deg 3% 6%) 78%, hsl(0deg 0% 3%) 100% );
 	}
 	body > header > h1 {
-		display: unset;
-		animation: fade-logo 300ms ease-out 800ms forwards;
+		font-size: clamp(2em, 20vh, 12vw);
+		font-size: clamp(2em, calc( 20 * var( --vh )), calc( 12 * var( --vw )));
 	}
 	body > main > iframe {
-		height: 40vh;
-		width: 60vw;
-		height: calc( 40 * var( --vh ));
-		width: calc( 60 * var( --vw ));
+		height: 30vh;
+		width: 40vw;
+		height: calc( 30 * var( --vh ));
+		width: calc( 40 * var( --vw ));
 	}
 	body > main > picture {
 		top: 0;
@@ -403,13 +398,6 @@ body > footer > ul > li a:active {
 	body > main > picture:nth-of-type(1) {
 		margin-right: -45%;
 	}
-	body > nav {
-		align-items: start;
-	}
-	body > nav > ul {
-		margin-top: 2vh;
-		margin-top: calc( 2 * var( --vh ));
-	}
 	body > nav > ul > li > a > figure > picture,
 	body > nav > ul > li a:link > figure > picture,
 	body > nav > ul > li a:visited > figure > picture,
@@ -421,8 +409,17 @@ body > footer > ul > li a:active {
 	body > nav > ul > li[data-view=full] {
 		display: unset;
 	}
-	body > footer {
-		display: block;
+}
+
+@media only screen and (orientation: landscape) and (pointer: coarse) {
+	body > header > picture {
+		display: none;
+	}
+	body > main > iframe {
+		height: 40vh;
+		width: 60vw;
+		height: calc( 40 * var( --vh ));
+		width: calc( 60 * var( --vw ));
 	}
 }
 
@@ -433,13 +430,14 @@ body > footer > ul > li a:active {
 @media only screen and (min-width: 768px) and (min-height: 1024px) {
 	body {
 		grid-template-rows: 30% 70%;
+		background: url("../image/pattern.png") repeat, linear-gradient(90deg, #1a1a1a 0%, #080808 50%, #1a1a1a 100%);
+		background: url("../image/pattern.png") repeat, linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% );
 	}
 	body > header > picture {
 		position: absolute;
 		height: 50vh;
 		height: calc( 50 * var( --vh ));
 		width: auto;
-		margin-top: 50vh;
 	}
 	body > header > picture > img {
 		height: 100%;
@@ -488,8 +486,11 @@ body > footer > ul > li a:active {
 		align-self: end;
 	}
 	body > nav > ul {
-		width: clamp(320px, 100vw, 1000px);
-		width: clamp(320px, var(--width), 1000px);
+		justify-content: center;
+	}
+	body > nav > ul > li {
+		width: clamp(calc( 2vh * 2), calc( 10vh * 2), calc( 64px * 2));
+		width: clamp(calc( calc( 2 * var( --vh ) ) * 2), calc( calc( 10 * var( --vh ) ) * 2), calc( 64px * 2));
 	}
 	body > nav > ul > li > a > figure > picture,
 	body > nav > ul > li a:link > figure > picture,
@@ -500,6 +501,9 @@ body > footer > ul > li a:active {
 		width: clamp(calc( 2 * var( --vh )), calc( 10 * var( --vh )), 64px);
 	}
 	body > nav > ul > li[data-view=full] {
+		display: unset;
+	}
+	body > footer {
 		display: unset;
 	}
 }
@@ -515,8 +519,6 @@ body > footer > ul > li a:active {
 		height: 50vh;
 		height: calc( 50 * var( --vh ));
 		width: auto;
-		margin-top: 50vh;
-		margin-top: calc( 50 * var( --vh ));
 	}
 	body > header > picture > img {
 		height: 100%;
@@ -531,8 +533,6 @@ body > footer > ul > li a:active {
 		grid-area: 2 / 1 / span 1 / span 1;
 	}
 	body > main > iframe {
-		height: clamp(140px, calc( 30 * var( --vh )), 400px);
-		width: clamp(280px, calc( 60 * var( --vw )), 800px);
 		margin-top: 10vh;
 		margin-top: calc( 10 * var( --vh ));
 		align-self: start;
@@ -591,30 +591,6 @@ body > footer > ul > li a:active {
 	body > footer {
 		display: unset;
 	}
-	body > footer > ul > li {
-		color: rgba(202, 202, 203, 0.8);
-		font-size: 1em;
-		font-weight: 600;
-	}
-	body > footer > ul > li > a,
-	body > footer > ul > li a:link,
-	body > footer > ul > li a:visited,
-	body > footer > ul > li a:hover,
-	body > footer > ul > li a:active {
-		color: rgba(202, 202, 203, 0.8);
-	}
-}
-
-@media only screen and (pointer: fine) and (max-height: 1100px) {
-	body {
-		grid-template-rows: 50% 50%;
-	}
-	body > main > picture:nth-of-type(2) {
-		margin-left: clamp(-900px, -75vh, -50%);
-	}
-	body > main > picture:nth-of-type(1) {
-		margin-right: clamp(-900px, -75vh, -50%);
-	}
 }
 
 @keyframes fade-group {
@@ -631,13 +607,13 @@ body > footer > ul > li a:active {
 
 @keyframes fade-logo {
 	to {
-		opacity: 0.4;
+		opacity: 0.2;
 	}
 }
 
 @keyframes fade-title {
 	to {
-		opacity: 0.6;
+		opacity: 1;
 	}
 }
 
