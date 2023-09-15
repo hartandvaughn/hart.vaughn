@@ -43,8 +43,8 @@ body {
             font-family: "Designer", sans-serif;
             color: rgba( 181, 182, 170, 0.4 );
             text-align: center;
-            font-size: clamp( 2em, 10vh, 12vw );
-            font-size: clamp( 2em, calc( 10 * var( --vh ) ), calc( 12 * var( --vw ) ) );
+            font-size: clamp( 2em, 12vw, 20vh );
+            font-size: clamp( 2em, calc( 12 * var( --vw ) ), calc( 20 * var( --vh ) ) );
             white-space: nowrap;
             margin-top: 10vh;
             margin-top: calc( 10 * var( --vh ) );
@@ -245,14 +245,6 @@ body {
             background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 8, 8, 8, 1 ) 0%, rgba( 26, 26, 26, 1 ) 50%, rgba( 8, 8, 8, 1 ) 100% );
             background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 0% 3%) 0%, hsl(0deg 3% 6%) 22%, hsl(0deg 3% 8%) 33%, hsl(0deg 3% 9%) 42%, hsl(0deg 4% 11%) 50%, hsl(0deg 3% 9%) 58%, hsl(0deg 3% 8%) 67%, hsl(0deg 3% 6%) 78%, hsl(0deg 0% 3%) 100% )'};
 
-            &> header {
-
-                &> h1 {
-                    font-size: clamp( 2em, 20vh, 12vw );
-                    font-size: clamp( 2em, calc( 20 * var( --vh ) ), calc( 12 * var( --vw ) ) );
-                }
-            }
-
             &> main {
 
                 &> iframe {
@@ -366,10 +358,10 @@ body {
                 grid-area: 2 / 1 / span 1 / span 1;
 
                 &> iframe {
-                    width: 60vw;
-                    height: 40vh;
-                    width: calc( 60 * var( --vw ) );
-                    height: calc( 40 * var( --vh ) );
+                    width: 30vw;
+                    height: 30vh;
+                    width: calc( 30 * var( --vw ) );
+                    height: calc( 30 * var( --vh ) );
                     max-width: 600px;
                     max-height: 400px;
                     align-self: start;
@@ -441,114 +433,5 @@ body {
             }
         }
 
-    }
- 
-    @media ( pointer: fine ) {
-
-        body {
-            grid-template-rows: 30% 70%;
-            background: url( "../image/pattern.png" ) repeat, linear-gradient(90deg, rgba( 26, 26, 26, 1 ) 0%, rgba( 8, 8, 8, 1 ) 50%, rgba( 26, 26, 26, 1 ) 100% );
-            background: url( "../image/pattern.png" ) repeat, #{'linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% )'};
-        
-            &> header {
-        
-                &> picture {
-                    position: absolute;
-                    height: 50vh;
-                    height: calc( 50 * var( --vh ) );
-                    width: auto;
-        
-                    &> img {
-                        height: 100%;
-                        width: auto;
-                        animation: fade-logo 300ms ease-out 800ms forwards;
-                    }
-                }
-        
-                &> h1 {
-                    display: unset;
-                    animation: fade-title 300ms ease-out 800ms forwards;
-                }
-            }
-        
-            &> main {
-                grid-area: 2 / 1 / span 1 / span 1;
-        
-                &> iframe {
-                    // height: clamp( 140px, calc( 30 * var( --vh ) ), 400px );
-                    // width: clamp( 280px, calc( 60 * var( --vw ) ), 800px );
-                    margin-top: 10vh;
-                    margin-top: calc( 10 * var( --vh ) );
-                    align-self: start;
-                }
-        
-                &> picture {
-                    top: unset;
-                    margin-top: unset;
-                    height: 100vh;
-                    height: var( --height );
-                    width: auto;
-                    transform: scaleX( -1 );
-                    z-index: 1;
-        
-                    &> img {
-                        height: 100%;
-                        width: auto;
-                    }
-        
-                    &:nth-of-type( 2 ) {
-                        left: unset;
-                        margin-left: -60vh;
-                    }
-        
-                    &:nth-of-type( 1 ) {
-                        right: unset;
-                        margin-right: -60vh;
-                    }
-                }
-            }
-        
-            &> nav {
-                grid-area: 1 / 1 / span 1 / span 1;
-                align-self: end;
-                background: none;
-        
-                &> ul {
-                    justify-content: center;
-        
-                    &> li {
-                        width: clamp( calc( 2vh * 2 ), calc( 10vh * 2 ), calc( 64px * 2 ) );
-                        width: clamp( calc( calc( 2 * var( --vh ) ) * 2 ), calc( calc( 10 * var( --vh ) ) * 2 ), calc( 64px * 2 ) );
-        
-                        &> a,
-                        a:link,
-                        a:visited,
-                        a:hover,
-                        a:active {
-        
-                            &> figure {
-        
-                                &> picture {
-                                    width: clamp( 2vh, 10vh, 64px );
-                                    width: clamp( calc( 2 * var( --vh ) ), calc( 10 * var( --vh ) ), 64px );
-                                }
-        
-                                &> figcaption {
-                                    display: unset;
-                                }
-                            }
-                        }
-
-                        &[data-view=full] {
-                            display: unset;
-                        }
-                    }
-                }
-            }
-        
-            &> footer {
-                display: unset;
-            }
-        }
     }
 }

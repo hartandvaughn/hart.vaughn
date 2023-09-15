@@ -164,8 +164,8 @@ body > header > h1 {
 	font-family: "Designer", sans-serif;
 	color: rgba(181, 182, 170, 0.4);
 	text-align: center;
-	font-size: clamp(2em, 10vh, 12vw);
-	font-size: clamp(2em, calc( 10 * var( --vh )), calc( 12 * var( --vw )));
+	font-size: clamp(2em, 12vw, 20vh);
+	font-size: clamp(2em, calc( 12 * var( --vw )), calc( 20 * var( --vh )));
 	white-space: nowrap;
 	margin-top: 10vh;
 	margin-top: calc( 10 * var( --vh ));
@@ -373,10 +373,6 @@ body > footer > ul > li a:active {
 		background: url("../image/pattern.png") repeat, linear-gradient(90deg, #080808 0%, #1a1a1a 50%, #080808 100%);
 		background: url("../image/pattern.png") repeat, linear-gradient( 90deg, hsl(0deg 0% 3%) 0%, hsl(0deg 3% 6%) 22%, hsl(0deg 3% 8%) 33%, hsl(0deg 3% 9%) 42%, hsl(0deg 4% 11%) 50%, hsl(0deg 3% 9%) 58%, hsl(0deg 3% 8%) 67%, hsl(0deg 3% 6%) 78%, hsl(0deg 0% 3%) 100% );
 	}
-	body > header > h1 {
-		font-size: clamp(2em, 20vh, 12vw);
-		font-size: clamp(2em, calc( 20 * var( --vh )), calc( 12 * var( --vw )));
-	}
 	body > main > iframe {
 		height: 30vh;
 		width: 40vw;
@@ -451,10 +447,10 @@ body > footer > ul > li a:active {
 		grid-area: 2 / 1 / span 1 / span 1;
 	}
 	body > main > iframe {
-		width: 60vw;
-		height: 40vh;
-		width: calc( 60 * var( --vw ));
-		height: calc( 40 * var( --vh ));
+		width: 30vw;
+		height: 30vh;
+		width: calc( 30 * var( --vw ));
+		height: calc( 30 * var( --vh ));
 		max-width: 600px;
 		max-height: 400px;
 		align-self: start;
@@ -499,91 +495,6 @@ body > footer > ul > li a:active {
 	body > nav > ul > li a:active > figure > picture {
 		width: clamp(2vh, 10vh, 64px);
 		width: clamp(calc( 2 * var( --vh )), calc( 10 * var( --vh )), 64px);
-	}
-	body > nav > ul > li[data-view=full] {
-		display: unset;
-	}
-	body > footer {
-		display: unset;
-	}
-}
-
-@media only screen and (pointer: fine) {
-	body {
-		grid-template-rows: 30% 70%;
-		background: url("../image/pattern.png") repeat, linear-gradient(90deg, #1a1a1a 0%, #080808 50%, #1a1a1a 100%);
-		background: url("../image/pattern.png") repeat, linear-gradient( 90deg, hsl(0deg 4% 11%) 0%, hsl(0deg 3% 9%) 13%, hsl(0deg 2% 7%) 25%, hsl(0deg 1% 5%) 37%, hsl(0deg 0% 3%) 50%, hsl(0deg 1% 5%) 63%, hsl(0deg 2% 7%) 75%, hsl(0deg 3% 9%) 87%, hsl(0deg 4% 11%) 100% );
-	}
-	body > header > picture {
-		position: absolute;
-		height: 50vh;
-		height: calc( 50 * var( --vh ));
-		width: auto;
-	}
-	body > header > picture > img {
-		height: 100%;
-		width: auto;
-		animation: fade-logo 300ms ease-out 800ms forwards;
-	}
-	body > header > h1 {
-		display: unset;
-		animation: fade-title 300ms ease-out 800ms forwards;
-	}
-	body > main {
-		grid-area: 2 / 1 / span 1 / span 1;
-	}
-	body > main > iframe {
-		margin-top: 10vh;
-		margin-top: calc( 10 * var( --vh ));
-		align-self: start;
-	}
-	body > main > picture {
-		top: unset;
-		margin-top: unset;
-		height: 100vh;
-		height: var(--height);
-		width: auto;
-		transform: scaleX(-1);
-		z-index: 1;
-	}
-	body > main > picture > img {
-		height: 100%;
-		width: auto;
-	}
-	body > main > picture:nth-of-type(2) {
-		left: unset;
-		margin-left: -60vh;
-	}
-	body > main > picture:nth-of-type(1) {
-		right: unset;
-		margin-right: -60vh;
-	}
-	body > nav {
-		grid-area: 1 / 1 / span 1 / span 1;
-		align-self: end;
-		background: none;
-	}
-	body > nav > ul {
-		justify-content: center;
-	}
-	body > nav > ul > li {
-		width: clamp(calc( 2vh * 2), calc( 10vh * 2), calc( 64px * 2));
-		width: clamp(calc( calc( 2 * var( --vh ) ) * 2), calc( calc( 10 * var( --vh ) ) * 2), calc( 64px * 2));
-	}
-	body > nav > ul > li > a > figure > picture,
-	body > nav > ul > li a:link > figure > picture,
-	body > nav > ul > li a:visited > figure > picture,
-	body > nav > ul > li a:hover > figure > picture,
-	body > nav > ul > li a:active > figure > picture {
-		width: clamp(2vh, 10vh, 64px);
-		width: clamp(calc( 2 * var( --vh )), calc( 10 * var( --vh )), 64px);
-	}
-	body > nav > ul > li > a > figure > figcaption,
-	body > nav > ul > li a:link > figure > figcaption,
-	body > nav > ul > li a:visited > figure > figcaption,
-	body > nav > ul > li a:hover > figure > figcaption,
-	body > nav > ul > li a:active > figure > figcaption {
-		display: unset;
 	}
 	body > nav > ul > li[data-view=full] {
 		display: unset;
